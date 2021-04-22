@@ -1,17 +1,17 @@
-import { SET_TRACKS, ADD_TRACKS, SET_FEATURES } from "../utils/constants";
+import { SET_TRACKS, SET_FEATURES, SET_MODAL } from "../utils/constants";
 import * as SpotifyFunctions from "../utils/spotifyFunctions.js";
 
-export const setTracks = (tracks) => ({
+const setTracks = (tracks) => ({
   type: SET_TRACKS,
   tracks,
 });
-export const addTracks = (tracks) => ({
-  type: ADD_TRACKS,
-  tracks,
-});
-export const setFeatures = (features) => ({
+const setFeatures = (features) => ({
   type: SET_FEATURES,
   features,
+});
+export const setModal = (modal) => ({
+  type: SET_MODAL,
+  modal,
 });
 
 export const getTracks = (searchTerm) => async (dispatch) => {
