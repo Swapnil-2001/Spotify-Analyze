@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getTracks } from "../../actions/result";
+import { getTracks, getFeatures } from "../../actions/result";
 import { connect } from "react-redux";
 import SearchForm from "../SearchForm/SearchForm";
 import SearchResults from "../SearchResults/SearchResults";
@@ -16,11 +16,17 @@ const Dashboard = (props) => {
   const handleSearch = (searchTerm) => {
     dispatch(getTracks(searchTerm));
   };
+  const setFeatures = (id) => {
+    dispatch(getFeatures(id));
+  };
   return (
     <>
       <SearchForm handleSearch={handleSearch} />
       {Object.keys(searchedTracks).length > 0 && (
-        <SearchResults tracks={searchedTracks.tracks} />
+        <SearchResults
+          tracks={searchedTracks.tracks}
+          setFeatures={setFeatures}
+        />
       )}
     </>
   );

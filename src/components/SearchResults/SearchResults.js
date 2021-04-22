@@ -1,24 +1,28 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-const SearchResults = ({ tracks }) => (
-  <>
-    {Object.keys(tracks).length > 0 && (
-      <div>
-        {tracks.items.map((track, index) => (
-          <React.Fragment key={index}>
-            <a
-              target="_blank"
-              href={track.external_urls.spotify}
-              rel="noopener noreferrer"
-              className="card-image-link"
-            >
-              {track.name}
-            </a>
-          </React.Fragment>
-        ))}
-      </div>
-    )}
-  </>
-);
+const SearchResults = ({ tracks, setFeatures }) => {
+  const history = useHistory();
+  return (
+    <>
+      {Object.keys(tracks).length > 0 && (
+        <div>
+          {tracks.items.map((track, index) => (
+            <React.Fragment key={index}>
+              <div
+                onClick={() => {
+                  setFeatures(track.id);
+                  history.push("/features");
+                }}
+              >
+                {track.name}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
 
 export default SearchResults;

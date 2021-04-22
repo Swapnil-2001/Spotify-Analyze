@@ -16,3 +16,14 @@ export async function getSearchedTracks(searchedTrack) {
     return null;
   }
 }
+
+export async function getFeatures(id) {
+  try {
+    const features = await spotifyApi.getAudioFeaturesForTrack(id);
+    return features;
+  } catch (err) {
+    console.error("Error: Attempting to get features for track!", err);
+    console.error(err.stack);
+    return null;
+  }
+}
