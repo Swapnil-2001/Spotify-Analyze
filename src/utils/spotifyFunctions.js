@@ -8,7 +8,7 @@ export function setAccessToken(accessToken) {
 
 export async function getSearchedTracks(searchedTrack) {
   try {
-    const track = await spotifyApi.searchTracks(searchedTrack);
+    const track = await spotifyApi.searchTracks(searchedTrack, { limit: 5 });
     return track;
   } catch (err) {
     console.error("Error: Attempting to get searched tracks!", err);
