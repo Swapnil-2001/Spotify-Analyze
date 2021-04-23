@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import "./SearchResults.css";
 
 const SearchResults = ({ tracks, setFeatures }) => {
   const history = useHistory();
@@ -8,16 +9,28 @@ const SearchResults = ({ tracks, setFeatures }) => {
       {Object.keys(tracks).length > 0 && (
         <div>
           {tracks.items.map((track, index) => (
-            <React.Fragment key={index}>
-              <div
-                onClick={() => {
-                  setFeatures(track.id);
-                  history.push("/features");
-                }}
-              >
-                {track.name}
+            <div
+              onClick={() => {
+                setFeatures(track.id);
+                history.push("/features");
+              }}
+              className="wrapper__div"
+              key={index}
+            >
+              {track.album.images.length > 0 && (
+                <img
+                  className="track__image"
+                  src={track.album.images[0].url}
+                  alt="track"
+                />
+              )}
+              <div className="track__name__div">
+                <p>{track.name}</p>
+                {track.artists.length > 0 && (
+                  <p className="artists__name">{track.artists[0].name}</p>
+                )}
               </div>
-            </React.Fragment>
+            </div>
           ))}
         </div>
       )}
