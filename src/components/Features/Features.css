@@ -1,0 +1,24 @@
+.feature__div {
+  display: flex;
+  margin: 100px;
+  width: 50%;
+  height: 250px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 50px #ccc;
+  cursor: pointer;
+}
+
+.right {
+  float: right;
+}
+
+.feature__div img {
+  height: 300px;
+  overflow: visible;
+}
+
+.feature__div p {
+  text-align: center;
+  margin: auto;
+}

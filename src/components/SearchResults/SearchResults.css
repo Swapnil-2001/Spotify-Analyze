@@ -1,0 +1,36 @@
+.wrapper__div {
+  margin: 10px 10px 0 10px;
+  display: flex;
+}
+
+.wrapper__div:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 50px #ccc;
+  transition: box-shadow 700ms;
+}
+
+.wrapper__div:hover .track__name__div {
+  transform: scale(1.2);
+}
+
+.wrapper__div > * {
+  margin: 15px;
+  margin-left: 30px;
+}
+
+.track__image {
+  width: 80px;
+}
+
+.track__name__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+  transition: transform 0.2s;
+}
+
+.artists__name {
+  font-size: 0.8rem;
+  color: gray;
+}

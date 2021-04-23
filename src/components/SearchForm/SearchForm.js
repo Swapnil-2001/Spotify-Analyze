@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SearchForm.css";
 
 const SearchForm = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,11 +18,20 @@ const SearchForm = (props) => {
     }
   };
   return (
-    <div>
+    <div className="main__div">
       <form onSubmit={handleSearch}>
         {errorMsg && <p>{errorMsg}</p>}
-        <input type="text" value={searchTerm} onChange={handleInputChange} />
-        <input type="submit" value="Search" />
+        <input
+          type="text"
+          placeholder="Search Track"
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+        <input
+          type="image"
+          src="https://icon-library.com/images/search-icon-white-png/search-icon-white-png-18.jpg"
+          alt="Search"
+        />
       </form>
     </div>
   );

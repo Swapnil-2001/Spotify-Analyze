@@ -19,6 +19,7 @@ const Dashboard = (props) => {
   const setFeatures = (id) => {
     dispatch(getFeatures(id));
   };
+  console.log(searchedTracks);
   return (
     <>
       <SearchForm handleSearch={handleSearch} />

@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 import mapping from "../../utils/descriptions";
 import { setModal } from "../../actions/result";
 import Modal from "../Modal/Modal";
+import "./Features.css";
+import Image from "./Image.js";
 
 const Features = (props) => {
   const { modal, features, dispatch } = props;
   const feats = [
     "liveness",
     "loudness",
+    "key",
     "valence",
     "mode",
     "speechiness",
@@ -29,8 +32,16 @@ const Features = (props) => {
                 onClick={() => {
                   dispatch(setModal(mapping[feature]));
                 }}
+                className={
+                  "feature__div " + (index % 2 !== 0 ? "left" : "right")
+                }
+                id={feature}
               >
-                {feature}
+                {index % 2 !== 0 && <Image feature={feature} />}
+                <p>
+                  {feature}: {features[feature]}
+                </p>
+                {index % 2 === 0 && <Image feature={feature} />}
               </div>
             )
         )}
