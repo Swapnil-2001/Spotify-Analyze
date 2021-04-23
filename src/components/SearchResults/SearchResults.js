@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import "./SearchResults.css";
 
-const SearchResults = ({ tracks, setFeatures }) => {
+const SearchResults = ({ tracks, setFeatures, setCurrentTrack }) => {
   const history = useHistory();
   return (
     <>
@@ -12,6 +12,7 @@ const SearchResults = ({ tracks, setFeatures }) => {
             <div
               onClick={() => {
                 setFeatures(track.id);
+                setCurrentTrack(track);
                 history.push("/features");
               }}
               className="wrapper__div"
