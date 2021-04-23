@@ -1,12 +1,36 @@
+.header__div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  padding-top: 35px;
+}
+
+.header__div p {
+  letter-spacing: 1px;
+  color: #7579e7;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 .feature__div {
+  background-color: white;
   display: flex;
   margin: 100px;
   width: 50%;
+  font-size: 1.1rem;
   height: 250px;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 50px #ccc;
   cursor: pointer;
+  color: #726a95;
+}
+
+.feature__div:hover p {
+  transform: scale(1.2);
+  font-weight: bold;
 }
 
 .right {
@@ -16,9 +40,71 @@
 .feature__div img {
   height: 300px;
   overflow: visible;
+  box-shadow: 0px 0px 50px #ccc;
 }
 
 .feature__div p {
   text-align: center;
   margin: auto;
+  transition: transform 0.2s;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+li {
+  color: #325288;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 15px;
+  padding: 15px 30px;
+  transition: box-shadow 300ms;
+}
+
+li:hover {
+  box-shadow: 0px 0px 50px #ccc;
+}
+
+.track__details__div {
+  color: #28527a;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.track__details__div h2 {
+  font-size: 2.5rem;
+  letter-spacing: 1.2px;
+}
+
+.track__details__div h3 {
+  margin: 10px 20px 20px 20px;
+  color: #a2b29f;
+}
+
+.link__div {
+  cursor: pointer;
+  padding: 5px 20px;
+  transition: background-color 300ms;
+  border: 1px solid black;
+}
+
+.link__div a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #28527a;
+}
+
+.link__div:hover {
+  background-color: black;
+}
+
+.link__div:hover a {
+  color: white;
 }

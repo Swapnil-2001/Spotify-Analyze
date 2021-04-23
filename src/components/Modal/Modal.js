@@ -18,7 +18,9 @@ const Modal = (props) => {
       className="backdrop"
       onClick={handleClick}
     >
-      <div className="modal__text">{modal}</div>
+      <div className="modal__text">
+        <p>{modal}</p>
+      </div>
     </motion.div>
   );
 };

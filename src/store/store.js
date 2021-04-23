@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import trackReducer from "../reducers/track";
 import tracksReducer from "../reducers/tracks";
 import featuresReducer from "../reducers/features";
 import modalReducer from "../reducers/modal";
@@ -7,6 +8,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
+    track: trackReducer,
     tracks: tracksReducer,
     features: featuresReducer,
     modal: modalReducer,
