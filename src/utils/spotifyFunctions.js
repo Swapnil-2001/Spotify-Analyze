@@ -38,3 +38,14 @@ export async function getRecentlyPlayedTracks() {
     return null;
   }
 }
+
+export async function getFavorites() {
+  try {
+    const tracks = await spotifyApi.getMyTopTracks();
+    return tracks;
+  } catch (err) {
+    console.error("Error: Attempting to get favorite tracks!", err);
+    console.error(err.stack);
+    return null;
+  }
+}

@@ -4,6 +4,7 @@ import {
   SET_MODAL,
   SET_TRACK,
   SET_RECENT_TRACKS,
+  SET_FAVS,
 } from "../utils/constants";
 import * as SpotifyFunctions from "../utils/spotifyFunctions.js";
 
@@ -17,6 +18,10 @@ const setFeatures = (features) => ({
 });
 const setRecentTracks = (tracks) => ({
   type: SET_RECENT_TRACKS,
+  tracks,
+});
+const setFavorites = (tracks) => ({
+  type: SET_FAVS,
   tracks,
 });
 export const setModal = (modal) => ({
@@ -50,6 +55,15 @@ export const getRecentTracks = () => async (dispatch) => {
   try {
     const result = await SpotifyFunctions.getRecentlyPlayedTracks();
     return dispatch(setRecentTracks(result.items));
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getFavorites = () => async (dispatch) => {
+  try {
+    const result = await SpotifyFunctions.getFavorites();
+    return dispatch(setFavorites(result.items));
   } catch (error) {
     console.log("error", error);
   }

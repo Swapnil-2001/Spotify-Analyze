@@ -1,0 +1,5 @@
+.favorites__track__div img {
+  width: 100px;
+  margin: 25px;
+  cursor: pointer;
+}
