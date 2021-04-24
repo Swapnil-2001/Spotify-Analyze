@@ -1,0 +1,15 @@
+.hide {
+  display: none;
+}
+
+.recent__wrapper__div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recent__track__div img {
+  width: 100px;
+  margin: 25px;
+  cursor: pointer;
+}

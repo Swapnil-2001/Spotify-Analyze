@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import SearchForm from "../SearchForm/SearchForm";
 import SearchResults from "../SearchResults/SearchResults";
 import { setAccessToken } from "../../utils/spotifyFunctions";
+import { Link } from "react-router-dom";
 
 const Dashboard = (props) => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const Dashboard = (props) => {
   };
   return (
     <>
+      <Link to="/main">Go to main</Link>
       <SearchForm handleSearch={handleSearch} />
       {Object.keys(searchedTracks).length > 0 && (
         <SearchResults

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Home from "./components/Home/Home";
+import Main from "./components/Main/Main";
 import RedirectPage from "./components/RedirectPage/RedirectPage";
 import Features from "./components/Features/Features";
 
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/redirect" component={RedirectPage} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/main" component={Main} />
           <Route path="/features" component={Features} />
         </Switch>
       </div>

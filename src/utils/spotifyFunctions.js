@@ -27,3 +27,14 @@ export async function getFeatures(id) {
     return null;
   }
 }
+
+export async function getRecentlyPlayedTracks() {
+  try {
+    const tracks = await spotifyApi.getMyRecentlyPlayedTracks();
+    return tracks;
+  } catch (err) {
+    console.error("Error: Attempting to get recently played tracks!", err);
+    console.error(err.stack);
+    return null;
+  }
+}
