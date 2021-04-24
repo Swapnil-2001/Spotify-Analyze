@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./SearchResults.css";
 
 const SearchResults = ({ tracks, setFeatures, setCurrentTrack }) => {
   const history = useHistory();
+  const [preview, setPreview] = useState("");
   return (
     <>
+      {preview.length > 0 && (
+        <audio controls src={preview} autoPlay hidden="true" />
+      )}
       {Object.keys(tracks).length > 0 && (
         <div>
           {tracks.items.map((track, index) => (
@@ -15,6 +19,12 @@ const SearchResults = ({ tracks, setFeatures, setCurrentTrack }) => {
                 setCurrentTrack(track);
                 history.push("/features");
               }}
+              onMouseEnter={() => {
+                if (track.preview_url) {
+                  setPreview(track.preview_url);
+                }
+              }}
+              onMouseLeave={() => setPreview("")}
               className="wrapper__div"
               key={index}
             >
