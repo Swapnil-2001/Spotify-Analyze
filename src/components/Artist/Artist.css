@@ -1,0 +1,9 @@
+.artist__wrapper {
+  display: flex;
+  margin: 50px;
+}
+
+.artist__img {
+  width: 100px;
+  border-radius: 50%;
+}

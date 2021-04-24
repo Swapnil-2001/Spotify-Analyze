@@ -4,6 +4,10 @@ export const SET_RECENT_TRACKS = "SET_RECENT_TRACKS";
 
 export const SET_FAVS = "SET_FAVS";
 
+export const SET_ARTIST = "SET_ARTIST";
+
+export const CLEAR_ARTIST = "CLEAR_ARTIST";
+
 export const SET_TRACK = "SET_TRACK";
 
 export const SET_FEATURES = "SET_FEATURES";

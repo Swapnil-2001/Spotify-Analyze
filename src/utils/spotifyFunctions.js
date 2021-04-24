@@ -49,3 +49,14 @@ export async function getFavorites() {
     return null;
   }
 }
+
+export async function getArtist(id) {
+  try {
+    const artist = await spotifyApi.getArtist(id);
+    return artist;
+  } catch (err) {
+    console.error("Error: Attempting to get artist!", err);
+    console.error(err.stack);
+    return null;
+  }
+}

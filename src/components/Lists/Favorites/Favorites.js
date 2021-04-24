@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Favorites.css";
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ favorites, loadArtist }) => {
   const [preview, setPreview] = useState("");
   return (
     <>
@@ -22,6 +22,9 @@ const Favorites = ({ favorites }) => {
           {Object.keys(item.album).length > 0 && (
             <img
               src={item.album.images.length > 0 ? item.album.images[0].url : ""}
+              onClick={() => {
+                loadArtist(item.artists[0].id);
+              }}
               alt="album"
             />
           )}
