@@ -1,4 +1,4 @@
-import { SET_MODAL } from "../utils/constants";
+import { SET_MODAL } from "../../utils/constants";
 
 const modalReducer = (state = "", action) => {
   const { modal } = action;

@@ -1,4 +1,4 @@
-import { SET_TRACK } from "../utils/constants";
+import { SET_TRACK } from "../../utils/constants";
 
 const trackReducer = (state = {}, action) => {
   const { track } = action;

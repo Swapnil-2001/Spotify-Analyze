@@ -1,4 +1,4 @@
-import { SET_FEATURES } from "../utils/constants";
+import { SET_FEATURES } from "../../utils/constants";
 
 const featuresReducer = (state = {}, action) => {
   const { features } = action;
