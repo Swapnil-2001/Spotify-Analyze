@@ -37,6 +37,7 @@ const Main = (props) => {
     setSelectedCategory("favorites");
   };
   const loadArtist = (id, name) => {
+    dispatch(clearAlbum());
     dispatch(getArtist(id));
     dispatch(getArtistTop(id));
     dispatch(getAlbums(id));
@@ -48,9 +49,20 @@ const Main = (props) => {
   };
   return (
     <>
+      <div></div>
       <div className="navbar">
-        <button onClick={loadRecent}>Recently played</button>
-        <button onClick={loadFavs}>Favorites</button>
+        <span
+          className={selectedCategory === "recent" ? "focus" : ""}
+          onClick={loadRecent}
+        >
+          Recently played
+        </span>
+        <span
+          className={selectedCategory === "favorites" ? "focus" : ""}
+          onClick={loadFavs}
+        >
+          Favorites
+        </span>
       </div>
       <div
         className={`${
@@ -71,7 +83,9 @@ const Main = (props) => {
         )}
       </div>
       {Object.keys(artist).length > 0 && (
-        <Artist loadAlbum={loadAlbum} loadArtist={loadArtist} />
+        <div className="artist__component">
+          <Artist loadAlbum={loadAlbum} loadArtist={loadArtist} />
+        </div>
       )}
     </>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 
 const Home = (props) => {
   const {
@@ -12,10 +13,8 @@ const Home = (props) => {
     window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scope}&response_type=token&show_dialog=true`;
   };
   return (
-    <div>
-      <button type="submit" onClick={handleLogin}>
-        Login to spotify
-      </button>
+    <div className="login__wrapper">
+      <div onClick={handleLogin}>Login to spotify</div>
     </div>
   );
 };

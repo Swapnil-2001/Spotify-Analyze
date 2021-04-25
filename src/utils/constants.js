@@ -2,6 +2,8 @@ export const SET_TRACKS = "SET_TRACKS";
 
 export const SET_RECENT_TRACKS = "SET_RECENT_TRACKS";
 
+export const CLEAR_SEARCH = "CLEAR_SEARCH";
+
 export const SET_FAVS = "SET_FAVS";
 
 export const SET_ALBUM = "SET_ALBUM";

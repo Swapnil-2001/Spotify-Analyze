@@ -12,6 +12,7 @@ import {
   SET_ALBUMS,
   SET_ALBUM,
   CLEAR_ALBUM,
+  CLEAR_SEARCH,
 } from "../utils/constants";
 import * as SpotifyFunctions from "../utils/spotifyFunctions.js";
 
@@ -50,6 +51,9 @@ const setAlbums = (albums) => ({
 const setAlbum = (album) => ({
   type: SET_ALBUM,
   album,
+});
+export const clearSearch = () => ({
+  type: CLEAR_SEARCH,
 });
 export const setModal = (modal) => ({
   type: SET_MODAL,

@@ -10,13 +10,17 @@ const SelectedAlbum = ({ album, setSelectedTrack }) => {
       ? album.images[0].url
       : "";
   return (
-    <>
+    <div className="album__total__wrapper">
       {preview.length > 0 && (
         <audio controls src={preview} autoPlay hidden={true} />
       )}
       <div className="album__wrapper">
         <img
-          src={album.images.length > 0 ? album.images[0].url : ""}
+          src={
+            album.images.length > 0
+              ? album.images[0].url
+              : "../../images/images"
+          }
           alt="album"
         />
         <div>
@@ -24,25 +28,28 @@ const SelectedAlbum = ({ album, setSelectedTrack }) => {
         </div>
       </div>
       <div className="tracks__div">
-        {Object.keys(album.tracks).length > 0 &&
-          album.tracks.items.map((track, ind) => (
-            <div
-              onMouseEnter={() => {
-                if (track.preview_url) {
-                  setPreview(track.preview_url);
-                }
-              }}
-              onMouseLeave={() => setPreview("")}
-              key={ind}
-              onClick={() => {
-                setSelectedTrack(track);
-              }}
-            >
-              <img src={url} alt="track" />
-            </div>
-          ))}
+        <p>Tracks</p>
+        <div>
+          {Object.keys(album.tracks).length > 0 &&
+            album.tracks.items.map((track, ind) => (
+              <div
+                onMouseEnter={() => {
+                  if (track.preview_url) {
+                    setPreview(track.preview_url);
+                  }
+                }}
+                onMouseLeave={() => setPreview("")}
+                key={ind}
+                onClick={() => {
+                  setSelectedTrack(track);
+                }}
+              >
+                <img src={url} alt="track" />
+              </div>
+            ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
