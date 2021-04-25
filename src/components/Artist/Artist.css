@@ -1,0 +1,66 @@
+.fade {
+  filter: brightness(45%);
+}
+
+.artist__wrapper {
+  display: flex;
+  margin: 70px 0;
+  justify-content: center;
+}
+
+.artist__wrapper img {
+  margin: 0 30px;
+}
+
+.artist__img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.artist__wrapper__div {
+  display: flex;
+}
+
+.artist__div {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.left__section {
+  flex: 5;
+}
+
+.artist__div img {
+  cursor: pointer;
+  width: 60px;
+  margin: 10px 10px 0 0;
+}
+
+.related__artist__div {
+  padding: 30px 0;
+  background-color: lightgray;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.related__artist__div img {
+  cursor: pointer;
+  width: 60px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.related__artist__div p {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.related__artist__div div {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,24 @@
+.upper__section {
+  margin: 50px 200px;
+}
+
+.image__wrapper__div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heading__div {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.track__div {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.track__div img {
+  width: 85px;
+}
