@@ -8,6 +8,10 @@
   border-radius: 50%;
 }
 
+.related__div > img {
+  border-radius: 50%;
+}
+
 .artist__div {
   display: flex;
   flex-wrap: wrap;

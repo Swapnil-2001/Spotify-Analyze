@@ -71,3 +71,14 @@ export async function getArtistTop(id) {
     return null;
   }
 }
+
+export async function getRelated(id) {
+  try {
+    const res = await spotifyApi.getArtistRelatedArtists(id);
+    return res.artists;
+  } catch (err) {
+    console.error("Error: Attempting to get related artists!", err);
+    console.error(err.stack);
+    return null;
+  }
+}

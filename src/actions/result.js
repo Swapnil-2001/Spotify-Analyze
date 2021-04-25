@@ -8,6 +8,7 @@ import {
   SET_FAVS,
   SET_ARTIST,
   SET_ARTIST_TOP,
+  SET_RELATED,
 } from "../utils/constants";
 import * as SpotifyFunctions from "../utils/spotifyFunctions.js";
 
@@ -34,6 +35,10 @@ const setArtist = (artist) => ({
 const setArtistTop = (tracks) => ({
   type: SET_ARTIST_TOP,
   tracks,
+});
+const setRelated = (artists) => ({
+  type: SET_RELATED,
+  artists,
 });
 export const setModal = (modal) => ({
   type: SET_MODAL,
@@ -96,6 +101,15 @@ export const getArtistTop = (id) => async (dispatch) => {
   try {
     const result = await SpotifyFunctions.getArtistTop(id);
     return dispatch(setArtistTop(result.tracks));
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getRelated = (id) => async (dispatch) => {
+  try {
+    const result = await SpotifyFunctions.getRelated(id);
+    return dispatch(setRelated(result));
   } catch (error) {
     console.log("error", error);
   }

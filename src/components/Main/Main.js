@@ -6,6 +6,7 @@ import {
   getArtistTop,
   getTracks,
   removeArtist,
+  getRelated,
 } from "../../actions/result";
 import { connect } from "react-redux";
 import Recent from "../Lists/Recent/Recent";
@@ -15,7 +16,7 @@ import "./Main.css";
 
 const Main = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { tracks, recent, favorites, artist, dispatch } = props;
+  const { related, recent, favorites, artist, dispatch } = props;
   const loadRecent = () => {
     if (Object.keys(recent).length === 0) {
       dispatch(getRecentTracks());
@@ -34,8 +35,9 @@ const Main = (props) => {
     dispatch(getArtist(id));
     dispatch(getArtistTop(id));
     dispatch(getTracks(name));
+    dispatch(getRelated(id));
   };
-  console.log(tracks);
+  console.log(related);
 
   return (
     <>
@@ -61,7 +63,7 @@ const Main = (props) => {
           <Favorites loadArtist={loadArtist} favorites={favorites} />
         )}
       </div>
-      {Object.keys(artist).length > 0 && <Artist />}
+      {Object.keys(artist).length > 0 && <Artist loadArtist={loadArtist} />}
     </>
   );
 };
@@ -72,6 +74,7 @@ const mapStateToProps = (state) => {
     favorites: state.favorites,
     artist: state.artist,
     tracks: state.tracks,
+    related: state.related,
   };
 };
 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./Artist.css";
 
 const Artist = (props) => {
-  const { tracks, artist, artistTop } = props;
+  const { loadArtist, related, tracks, artist, artistTop } = props;
   const [preview, setPreview] = useState("");
   return (
     <>
@@ -21,6 +21,24 @@ const Artist = (props) => {
           {artist.genres && <span>{artist.genres.join(", ")}</span>}
           <p>{artist.followers.total} Followers</p>
         </div>
+      </div>
+      Related Artists
+      <div className="artist__div">
+        {related.length > 0 &&
+          related.map((artist, ind) => (
+            <div
+              className="related__div"
+              onClick={() => {
+                loadArtist(artist.id, artist.name);
+              }}
+              key={ind}
+            >
+              <img
+                src={artist.images.length > 0 ? artist.images[0].url : ""}
+                alt="artist"
+              />{" "}
+            </div>
+          ))}
       </div>
       Top tracks
       <div className="artist__div">
@@ -71,6 +89,7 @@ const mapStateToProps = (state) => {
     artist: state.artist,
     artistTop: state.artistTop,
     tracks: state.tracks,
+    related: state.related,
   };
 };
 

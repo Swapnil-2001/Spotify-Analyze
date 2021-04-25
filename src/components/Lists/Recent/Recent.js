@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Recent.css";
 
-const Recent = ({ recent }) => {
+const Recent = ({ loadArtist, recent }) => {
   const [preview, setPreview] = useState("");
   return (
     <>
@@ -26,6 +26,12 @@ const Recent = ({ recent }) => {
                   ? item.track.album.images[0].url
                   : ""
               }
+              onClick={() => {
+                loadArtist(
+                  item.track.artists[0].id,
+                  item.track.artists[0].name
+                );
+              }}
               alt="album"
             />
           )}
