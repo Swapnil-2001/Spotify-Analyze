@@ -1,5 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import albumReducer from "../reducers/artistReducer/album";
+import albumsReducer from "../reducers/artistReducer/albums";
 import relatedReducer from "../reducers/artistReducer/related";
 import artistTopReducer from "../reducers/artistReducer/artistTop";
 import artistReducer from "../reducers/artistReducer/artist";
@@ -13,6 +15,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
+    album: albumReducer,
+    albums: albumsReducer,
     related: relatedReducer,
     artistTop: artistTopReducer,
     artist: artistReducer,

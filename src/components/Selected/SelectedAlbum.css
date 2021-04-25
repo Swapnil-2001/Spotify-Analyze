@@ -1,0 +1,18 @@
+.album__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album__wrapper img {
+  width: 80px;
+}
+
+.tracks__div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tracks__div img {
+  width: 70px;
+  margin: 20px;
+}

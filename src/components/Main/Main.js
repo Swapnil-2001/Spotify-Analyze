@@ -7,6 +7,9 @@ import {
   getTracks,
   removeArtist,
   getRelated,
+  getAlbums,
+  getAlbum,
+  clearAlbum,
 } from "../../actions/result";
 import { connect } from "react-redux";
 import Recent from "../Lists/Recent/Recent";
@@ -16,12 +19,13 @@ import "./Main.css";
 
 const Main = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { related, recent, favorites, artist, dispatch } = props;
+  const { recent, favorites, artist, dispatch } = props;
   const loadRecent = () => {
     if (Object.keys(recent).length === 0) {
       dispatch(getRecentTracks());
     }
     dispatch(removeArtist());
+    dispatch(clearAlbum());
     setSelectedCategory("recent");
   };
   const loadFavs = () => {
@@ -29,16 +33,19 @@ const Main = (props) => {
       dispatch(getFavorites());
     }
     dispatch(removeArtist());
+    dispatch(clearAlbum());
     setSelectedCategory("favorites");
   };
   const loadArtist = (id, name) => {
     dispatch(getArtist(id));
     dispatch(getArtistTop(id));
+    dispatch(getAlbums(id));
     dispatch(getTracks(name));
     dispatch(getRelated(id));
   };
-  console.log(related);
-
+  const loadAlbum = (id) => {
+    dispatch(getAlbum(id));
+  };
   return (
     <>
       <div className="navbar">
@@ -63,7 +70,9 @@ const Main = (props) => {
           <Favorites loadArtist={loadArtist} favorites={favorites} />
         )}
       </div>
-      {Object.keys(artist).length > 0 && <Artist loadArtist={loadArtist} />}
+      {Object.keys(artist).length > 0 && (
+        <Artist loadAlbum={loadAlbum} loadArtist={loadArtist} />
+      )}
     </>
   );
 };
@@ -73,8 +82,6 @@ const mapStateToProps = (state) => {
     recent: state.recent,
     favorites: state.favorites,
     artist: state.artist,
-    tracks: state.tracks,
-    related: state.related,
   };
 };
 

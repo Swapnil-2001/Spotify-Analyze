@@ -9,6 +9,9 @@ import {
   SET_ARTIST,
   SET_ARTIST_TOP,
   SET_RELATED,
+  SET_ALBUMS,
+  SET_ALBUM,
+  CLEAR_ALBUM,
 } from "../utils/constants";
 import * as SpotifyFunctions from "../utils/spotifyFunctions.js";
 
@@ -40,6 +43,14 @@ const setRelated = (artists) => ({
   type: SET_RELATED,
   artists,
 });
+const setAlbums = (albums) => ({
+  type: SET_ALBUMS,
+  albums,
+});
+const setAlbum = (album) => ({
+  type: SET_ALBUM,
+  album,
+});
 export const setModal = (modal) => ({
   type: SET_MODAL,
   modal,
@@ -50,6 +61,9 @@ export const setTrack = (track) => ({
 });
 export const removeArtist = () => ({
   type: CLEAR_ARTIST,
+});
+export const clearAlbum = () => ({
+  type: CLEAR_ALBUM,
 });
 
 export const getTracks = (searchTerm) => async (dispatch) => {
@@ -110,6 +124,24 @@ export const getRelated = (id) => async (dispatch) => {
   try {
     const result = await SpotifyFunctions.getRelated(id);
     return dispatch(setRelated(result));
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getAlbums = (id) => async (dispatch) => {
+  try {
+    const result = await SpotifyFunctions.getAlbums(id);
+    return dispatch(setAlbums(result));
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getAlbum = (id) => async (dispatch) => {
+  try {
+    const result = await SpotifyFunctions.getAlbum(id);
+    return dispatch(setAlbum(result));
   } catch (error) {
     console.log("error", error);
   }

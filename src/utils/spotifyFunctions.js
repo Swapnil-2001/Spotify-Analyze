@@ -82,3 +82,25 @@ export async function getRelated(id) {
     return null;
   }
 }
+
+export async function getAlbums(id) {
+  try {
+    const albums = await spotifyApi.getArtistAlbums(id);
+    return albums.items;
+  } catch (err) {
+    console.error("Error: Attempting to get albums!", err);
+    console.error(err.stack);
+    return null;
+  }
+}
+
+export async function getAlbum(id) {
+  try {
+    const album = await spotifyApi.getAlbum(id);
+    return album;
+  } catch (err) {
+    console.error("Error: Attempting to get album!", err);
+    console.error(err.stack);
+    return null;
+  }
+}
