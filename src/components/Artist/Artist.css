@@ -7,3 +7,17 @@
   width: 100px;
   border-radius: 50%;
 }
+
+.artist__div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.top__div {
+  margin: 10px;
+}
+
+.artist__div img {
+  cursor: pointer;
+  width: 60px;
+}

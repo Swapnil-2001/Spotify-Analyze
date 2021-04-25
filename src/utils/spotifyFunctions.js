@@ -8,7 +8,7 @@ export function setAccessToken(accessToken) {
 
 export async function getSearchedTracks(searchedTrack) {
   try {
-    const track = await spotifyApi.searchTracks(searchedTrack, { limit: 5 });
+    const track = await spotifyApi.searchTracks(searchedTrack, { limit: 50 });
     return track;
   } catch (err) {
     console.error("Error: Attempting to get searched tracks!", err);
@@ -56,6 +56,17 @@ export async function getArtist(id) {
     return artist;
   } catch (err) {
     console.error("Error: Attempting to get artist!", err);
+    console.error(err.stack);
+    return null;
+  }
+}
+
+export async function getArtistTop(id) {
+  try {
+    const tracks = await spotifyApi.getArtistTopTracks(id, "IN");
+    return tracks;
+  } catch (err) {
+    console.error("Error: Attempting to get artist's top tracks!", err);
     console.error(err.stack);
     return null;
   }

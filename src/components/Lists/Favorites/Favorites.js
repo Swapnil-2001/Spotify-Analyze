@@ -23,7 +23,7 @@ const Favorites = ({ favorites, loadArtist }) => {
             <img
               src={item.album.images.length > 0 ? item.album.images[0].url : ""}
               onClick={() => {
-                loadArtist(item.artists[0].id);
+                loadArtist(item.artists[0].id, item.artists[0].name);
               }}
               alt="album"
             />

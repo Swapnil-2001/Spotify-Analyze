@@ -1,4 +1,5 @@
 import {
+  CLEAR_ARTIST,
   SET_TRACKS,
   SET_FEATURES,
   SET_MODAL,
@@ -6,6 +7,7 @@ import {
   SET_RECENT_TRACKS,
   SET_FAVS,
   SET_ARTIST,
+  SET_ARTIST_TOP,
 } from "../utils/constants";
 import * as SpotifyFunctions from "../utils/spotifyFunctions.js";
 
@@ -29,6 +31,10 @@ const setArtist = (artist) => ({
   type: SET_ARTIST,
   artist,
 });
+const setArtistTop = (tracks) => ({
+  type: SET_ARTIST_TOP,
+  tracks,
+});
 export const setModal = (modal) => ({
   type: SET_MODAL,
   modal,
@@ -36,6 +42,9 @@ export const setModal = (modal) => ({
 export const setTrack = (track) => ({
   type: SET_TRACK,
   track,
+});
+export const removeArtist = () => ({
+  type: CLEAR_ARTIST,
 });
 
 export const getTracks = (searchTerm) => async (dispatch) => {
@@ -78,6 +87,15 @@ export const getArtist = (id) => async (dispatch) => {
   try {
     const result = await SpotifyFunctions.getArtist(id);
     return dispatch(setArtist(result));
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+export const getArtistTop = (id) => async (dispatch) => {
+  try {
+    const result = await SpotifyFunctions.getArtistTop(id);
+    return dispatch(setArtistTop(result.tracks));
   } catch (error) {
     console.log("error", error);
   }
