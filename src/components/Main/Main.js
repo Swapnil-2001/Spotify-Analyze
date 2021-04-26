@@ -19,15 +19,26 @@ import { setAccessToken } from "../../utils/spotifyFunctions";
 import "./Main.css";
 
 const Main = (props) => {
+  const {
+    recent,
+    favorites,
+    history,
+    artist,
+    dispatch,
+    isValidSession,
+  } = props;
   const [tutorial, removeTutorial] = useState(true);
   useEffect(() => {
     (async function () {
-      const params = JSON.parse(localStorage.getItem("params"));
-      await setAccessToken(params.access_token);
+      if (isValidSession()) {
+        const params = JSON.parse(localStorage.getItem("params"));
+        await setAccessToken(params.access_token);
+      } else {
+        history.push("/");
+      }
     })();
-  }, []);
+  }, [history, isValidSession]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { recent, favorites, artist, dispatch } = props;
   const handleClick = (e) => {
     if (e.target.classList.contains("backdrop")) {
       removeTutorial(false);
