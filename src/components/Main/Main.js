@@ -19,6 +19,7 @@ import { setAccessToken } from "../../utils/spotifyFunctions";
 import "./Main.css";
 
 const Main = (props) => {
+  const [tutorial, removeTutorial] = useState(true);
   useEffect(() => {
     (async function () {
       const params = JSON.parse(localStorage.getItem("params"));
@@ -27,6 +28,11 @@ const Main = (props) => {
   }, []);
   const [selectedCategory, setSelectedCategory] = useState("");
   const { recent, favorites, artist, dispatch } = props;
+  const handleClick = (e) => {
+    if (e.target.classList.contains("backdrop")) {
+      removeTutorial(false);
+    }
+  };
   const loadRecent = () => {
     if (Object.keys(recent).length === 0) {
       dispatch(getRecentTracks());
@@ -56,7 +62,24 @@ const Main = (props) => {
   };
   return (
     <>
-      <div></div>
+      {tutorial && (
+        <div className="backdrop" onClick={handleClick}>
+          <div className="modal">
+            <h1>Click on any of the buttons to get started!</h1>
+            <div>
+              <p>1. Hover over any track for a 30 sec preview</p>
+              <p>
+                2. Click on any track and scroll down for more tracks by your
+                favorite artists
+              </p>
+              <p>
+                3. Explore songs by other artists: just click on any from the
+                "Related Artists" tab
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="navbar">
         <span
           className={selectedCategory === "recent" ? "focus" : ""}

@@ -2,6 +2,37 @@
   background-color: grey;
 }
 
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  padding: 60px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 100px;
+  background-color: white;
+  color: #726a95;
+}
+
+.modal h1 {
+  color: #02475e;
+}
+
+.modal p {
+  margin-top: 30px;
+}
+
 .hide {
   display: none;
 }
