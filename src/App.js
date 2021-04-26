@@ -13,8 +13,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/redirect" component={RedirectPage} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/main" component={Main} />
+          <Route path="/dashboard" component={Main} />
+          <Route path="/main" component={Dashboard} />
           <Route path="/features" component={Features} />
         </Switch>
       </div>

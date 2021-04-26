@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   getRecentTracks,
   getFavorites,
@@ -15,9 +15,16 @@ import { connect } from "react-redux";
 import Recent from "../Lists/Recent/Recent";
 import Favorites from "../Lists/Favorites/Favorites";
 import Artist from "../Artist/Artist";
+import { setAccessToken } from "../../utils/spotifyFunctions";
 import "./Main.css";
 
 const Main = (props) => {
+  useEffect(() => {
+    (async function () {
+      const params = JSON.parse(localStorage.getItem("params"));
+      await setAccessToken(params.access_token);
+    })();
+  }, []);
   const [selectedCategory, setSelectedCategory] = useState("");
   const { recent, favorites, artist, dispatch } = props;
   const loadRecent = () => {

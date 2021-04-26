@@ -2,42 +2,42 @@
   filter: brightness(45%);
 }
 
-.artist__wrapper {
+.artist__desc__div {
   display: flex;
   margin: 70px 0;
   justify-content: center;
+  color: #325288;
 }
 
-.artist__wrapper img {
+.artist__desc__div img {
   margin: 0 30px;
-}
-
-.artist__img {
   width: 100px;
   border-radius: 50%;
 }
 
-.artist__wrapper__div {
+.artist__records__div {
   display: flex;
-}
-
-.artist__div {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 15px 0;
+  font-weight: bold;
+  color: #687980;
 }
 
 .left__section {
   flex: 5;
 }
 
-.artist__div img {
-  cursor: pointer;
-  width: 60px;
-  margin: 10px 10px 0 0;
+.left__section > div {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
-.related__artist__div {
+.left__section img {
+  cursor: pointer;
+  width: 60px;
+  margin: 15px 20px 0 0;
+}
+
+.related__artists__div {
   padding: 30px 0;
   background-color: lightgray;
   flex: 1;
@@ -47,20 +47,56 @@
   flex-wrap: wrap;
 }
 
-.related__artist__div img {
+.related__artists__div p {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.related__artists__div div {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.related__artists__div img {
   cursor: pointer;
   width: 60px;
   border-radius: 50%;
   margin: 5px;
 }
 
-.related__artist__div p {
-  font-weight: bold;
-  margin-bottom: 15px;
+@media only screen and (max-width: 1200px) {
+  .related__artists__div {
+    padding: 15px 0;
+  }
+  .left__section > div {
+    margin-bottom: 30px;
+  }
+  .left__section img {
+    margin-right: 15px;
+  }
 }
 
-.related__artist__div div {
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
+@media only screen and (max-width: 1000px) {
+  .left__section img {
+    margin-right: 5px;
+  }
+  .related__artists__div p {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .left__section img {
+    margin-right: 5px;
+  }
+  .related__artists__div p {
+    font-size: 0.5rem;
+  }
+  .related__artists__div {
+    flex: 2;
+  }
+}
+
+@media only screen and (max-width: 750px) {
 }

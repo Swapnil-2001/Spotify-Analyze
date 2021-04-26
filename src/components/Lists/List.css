@@ -1,24 +1,38 @@
-.upper__section {
+.songs__div {
   margin: 50px 200px;
 }
 
-.image__wrapper__div {
+.heading__div {
+  color: #7868e6;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.songs__list__div {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.heading__div {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.track__div {
+.songs__list__div > div {
   margin: 10px;
   cursor: pointer;
 }
 
-.track__div img {
+.songs__list__div img {
   width: 85px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .songs__div {
+    margin: 50px 150px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .songs__div {
+    margin: 50px 100px;
+  }
 }

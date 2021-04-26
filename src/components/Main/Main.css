@@ -2,6 +2,10 @@
   background-color: grey;
 }
 
+.hide {
+  display: none;
+}
+
 .navbar {
   text-align: center;
   background-color: black;
@@ -20,10 +24,6 @@
   transition: background-color 500ms;
 }
 
-.hide {
-  display: none;
-}
-
 .track__wrapper__div {
   display: flex;
   flex-direction: column;
@@ -33,5 +33,31 @@
 .artist__component {
   background-color: #eeebdd;
   margin: 0 200px;
+  margin-bottom: 50px;
   padding: 25px 50px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .artist__component {
+    margin: 0 100px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .artist__component {
+    margin: 0 75px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .artist__component {
+    margin: 0 50px;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .artist__component {
+    margin: 0;
+  }
 }

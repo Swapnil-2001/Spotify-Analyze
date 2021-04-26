@@ -4,14 +4,14 @@ import "../List.css";
 const Recent = ({ loadArtist, recent }) => {
   const [preview, setPreview] = useState("");
   return (
-    <div className="upper__section">
+    <div className="songs__div">
       <div className="heading__div">
         <p>Your Recently Played Tracks</p>
       </div>
       {preview.length > 0 && (
         <audio controls src={preview} autoPlay hidden={true} />
       )}
-      <div className="image__wrapper__div">
+      <div className="songs__list__div">
         {recent.map((item, index) => (
           <div
             onMouseEnter={() => {
@@ -21,7 +21,6 @@ const Recent = ({ loadArtist, recent }) => {
             }}
             onMouseLeave={() => setPreview("")}
             key={index}
-            className="track__div"
           >
             {Object.keys(item.track.album).length > 0 && (
               <img

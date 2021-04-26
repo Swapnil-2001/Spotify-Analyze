@@ -24,7 +24,7 @@ const Artist = (props) => {
       {preview.length > 0 && (
         <audio controls src={preview} autoPlay hidden={true} />
       )}
-      <div className="artist__wrapper">
+      <div className="artist__desc__div">
         <img
           src={
             artist.images.length > 0
@@ -32,7 +32,6 @@ const Artist = (props) => {
               : "../../images/images.jpg"
           }
           alt="artist"
-          className="artist__img"
         />
         <div>
           <h2>{artist.name}</h2>
@@ -40,99 +39,96 @@ const Artist = (props) => {
           <p>{artist.followers.total} Followers</p>
         </div>
       </div>
-      <div className="artist__wrapper__div">
+      <div className="artist__records__div">
         <div className="left__section">
           Top tracks
-          <div className="artist__div">
+          <div>
             {artistTop.length > 0 &&
               artistTop.map((track, ind) => (
-                <div className="top__div" key={ind}>
-                  <img
-                    src={
-                      track.album.images.length > 0
-                        ? track.album.images[0].url
-                        : "../../images/images.jpg"
+                <img
+                  src={
+                    track.album.images.length > 0
+                      ? track.album.images[0].url
+                      : "../../images/images.jpg"
+                  }
+                  onMouseEnter={() => {
+                    if (track.preview_url) {
+                      setPreview(track.preview_url);
                     }
-                    onMouseEnter={() => {
-                      if (track.preview_url) {
-                        setPreview(track.preview_url);
-                      }
-                    }}
-                    onMouseLeave={() => setPreview("")}
-                    onClick={() => {
-                      setSelectedTrack(track.album);
-                      dispatch(clearAlbum());
-                      window.scroll({
-                        top: document.body.offsetHeight,
-                        left: 0,
-                        behavior: "smooth",
-                      });
-                    }}
-                    alt="album"
-                    className={track.preview_url ? "" : "fade"}
-                  />
-                </div>
+                  }}
+                  onMouseLeave={() => setPreview("")}
+                  onClick={() => {
+                    setSelectedTrack(track.album);
+                    dispatch(clearAlbum());
+                    window.scroll({
+                      top: document.body.offsetHeight,
+                      left: 0,
+                      behavior: "smooth",
+                    });
+                  }}
+                  alt="album"
+                  className={track.preview_url ? "" : "fade"}
+                  key={ind}
+                />
               ))}
           </div>
           Albums
-          <div className="artist__div">
+          <div>
             {albums.length > 0 &&
               albums.map((album, ind) => (
-                <div key={ind}>
-                  <img
-                    src={
-                      album.images.length > 0
-                        ? album.images[0].url
-                        : "../../images/images.jpg"
-                    }
-                    alt="album"
-                    onClick={() => {
-                      setSelectedTrack({});
-                      loadAlbum(album.id);
-                      window.scroll({
-                        top: document.body.offsetHeight,
-                        left: 0,
-                        behavior: "smooth",
-                      });
-                    }}
-                  />
-                </div>
+                <img
+                  src={
+                    album.images.length > 0
+                      ? album.images[0].url
+                      : "../../images/images.jpg"
+                  }
+                  alt="album"
+                  onClick={() => {
+                    setSelectedTrack({});
+                    loadAlbum(album.id);
+                    window.scroll({
+                      top: document.body.offsetHeight,
+                      left: 0,
+                      behavior: "smooth",
+                    });
+                  }}
+                  key={ind}
+                />
               ))}
           </div>
           Singles/Appears In
-          <div className="artist__div">
+          <div>
             {Object.keys(tracks).length > 0 &&
               tracks.tracks.items.map((track, ind) => (
-                <div className="top__div" key={ind}>
-                  <img
-                    src={
-                      track.album.images.length > 0
-                        ? track.album.images[0].url
-                        : ""
+                <img
+                  src={
+                    track.album.images.length > 0
+                      ? track.album.images[0].url
+                      : "../../images/images.jpg"
+                  }
+                  onMouseEnter={() => {
+                    if (track.preview_url) {
+                      setPreview(track.preview_url);
                     }
-                    onMouseEnter={() => {
-                      if (track.preview_url) {
-                        setPreview(track.preview_url);
-                      }
-                    }}
-                    onMouseLeave={() => setPreview("")}
-                    alt="album"
-                    onClick={() => {
-                      setSelectedTrack(track.album);
-                      dispatch(clearAlbum());
-                      window.scroll({
-                        top: document.body.offsetHeight,
-                        left: 0,
-                        behavior: "smooth",
-                      });
-                    }}
-                    className={track.preview_url ? "" : "fade"}
-                  />
-                </div>
+                  }}
+                  onMouseLeave={() => setPreview("")}
+                  alt="album"
+                  onClick={() => {
+                    setSelectedTrack(track.album);
+                    dispatch(clearAlbum());
+                    window.scroll({
+                      top: document.body.offsetHeight,
+                      left: 0,
+                      behavior: "smooth",
+                    });
+                  }}
+                  className={track.preview_url ? "" : "fade"}
+                  key={ind}
+                />
               ))}
           </div>
         </div>
-        <div className="related__artist__div">
+        <div className="related__artists__div">
           <p>Related Artists</p>
           <div>
             {related.length > 0 &&
