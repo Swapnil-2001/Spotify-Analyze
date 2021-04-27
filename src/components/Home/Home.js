@@ -15,7 +15,7 @@ const Home = ({ isValidSession }) => {
         <Redirect to="/dashboard" />
       ) : (
         <div className="login__wrapper">
-          <div onClick={handleLogin}>Login to spotify</div>
+          <div onClick={handleLogin}>Login to Spotify</div>
         </div>
       )}
     </>

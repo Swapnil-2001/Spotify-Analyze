@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { clearAlbum } from "../../actions/result";
 import SelectedTrack from "../Selected/SelectedTrack";
@@ -19,6 +19,20 @@ const Artist = (props) => {
   } = props;
   const [selectedTrack, setSelectedTrack] = useState({});
   const [preview, setPreview] = useState("");
+  const albumRef = useRef(null);
+  const trackRef = useRef(null);
+  const scrollToAlbum = () => {
+    albumRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToTrack = () => {
+    trackRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => {
+    scrollToAlbum();
+  }, [album]);
+  useEffect(() => {
+    scrollToTrack();
+  }, [selectedTrack]);
   return (
     <>
       {preview.length > 0 && (
@@ -60,11 +74,6 @@ const Artist = (props) => {
                   onClick={() => {
                     setSelectedTrack(track.album);
                     dispatch(clearAlbum());
-                    window.scroll({
-                      top: document.body.offsetHeight,
-                      left: 0,
-                      behavior: "smooth",
-                    });
                   }}
                   alt="album"
                   className={track.preview_url ? "" : "fade"}
@@ -86,11 +95,6 @@ const Artist = (props) => {
                   onClick={() => {
                     setSelectedTrack({});
                     loadAlbum(album.id);
-                    window.scroll({
-                      top: document.body.offsetHeight,
-                      left: 0,
-                      behavior: "smooth",
-                    });
                   }}
                   key={ind}
                 />
@@ -116,11 +120,6 @@ const Artist = (props) => {
                   onClick={() => {
                     setSelectedTrack(track.album);
                     dispatch(clearAlbum());
-                    window.scroll({
-                      top: document.body.offsetHeight,
-                      left: 0,
-                      behavior: "smooth",
-                    });
                   }}
                   className={track.preview_url ? "" : "fade"}
                   key={ind}
@@ -156,10 +155,16 @@ const Artist = (props) => {
       </div>
 
       {Object.keys(album).length > 0 && (
-        <SelectedAlbum setSelectedTrack={setSelectedTrack} album={album} />
+        <div>
+          <div ref={albumRef} />
+          <SelectedAlbum setSelectedTrack={setSelectedTrack} album={album} />
+        </div>
       )}
       {Object.keys(selectedTrack).length > 0 && (
-        <SelectedTrack selectedTrack={selectedTrack} />
+        <div>
+          <div ref={trackRef} />
+          <SelectedTrack selectedTrack={selectedTrack} />
+        </div>
       )}
     </>
   );

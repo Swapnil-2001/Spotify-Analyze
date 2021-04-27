@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   getRecentTracks,
   getFavorites,
@@ -38,6 +38,13 @@ const Main = (props) => {
       }
     })();
   }, [history, isValidSession]);
+  const artistRef = useRef(null);
+  const scrollToBottom = () => {
+    artistRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [artist]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const handleClick = (e) => {
     if (e.target.classList.contains("backdrop")) {
@@ -76,6 +83,7 @@ const Main = (props) => {
       {tutorial && (
         <div className="backdrop" onClick={handleClick}>
           <div className="modal">
+            <h2>Headphones on, people!</h2>
             <h1>Click on any of the buttons to get started!</h1>
             <div>
               <p>1. Hover over any track for a 30 sec preview</p>
@@ -125,6 +133,7 @@ const Main = (props) => {
       </div>
       {Object.keys(artist).length > 0 && (
         <div className="artist__component">
+          <div ref={artistRef} />
           <Artist loadAlbum={loadAlbum} loadArtist={loadArtist} />
         </div>
       )}
